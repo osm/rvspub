@@ -11,7 +11,7 @@ const (
 	V2
 )
 
-const keySize = 8
+const KeySize = 8
 
 var (
 	ErrInvalidKeyLength   = errors.New("expecting key to be eight bytes")
@@ -19,7 +19,7 @@ var (
 )
 
 func Encrypt(v Version, key, plaintext []byte) ([]byte, error) {
-	if len(key) != keySize {
+	if len(key) != KeySize {
 		return nil, ErrInvalidKeyLength
 	}
 
@@ -38,7 +38,7 @@ func Encrypt(v Version, key, plaintext []byte) ([]byte, error) {
 }
 
 func Decrypt(v Version, key, ciphertext []byte) ([]byte, error) {
-	if len(key) != keySize {
+	if len(key) != KeySize {
 		return nil, ErrInvalidKeyLength
 	}
 

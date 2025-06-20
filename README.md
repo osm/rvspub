@@ -77,6 +77,8 @@ information:
 - ParadokS
 - splash
 - To the author(s) of RVS, whoever you may be
+- Novate
+- RoT// Red Fox
 
 ## Final Note
 

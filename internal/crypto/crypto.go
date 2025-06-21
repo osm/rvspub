@@ -9,6 +9,7 @@ type Version uint8
 const (
 	V1 Version = iota
 	V2
+	V3
 )
 
 const KeySize = 8
@@ -23,18 +24,23 @@ func Encrypt(v Version, key, plaintext []byte) ([]byte, error) {
 		return nil, ErrInvalidKeyLength
 	}
 
-	buf := append([]byte(nil), plaintext...)
-
 	switch v {
 	case V1:
+		buf := append([]byte(nil), plaintext...)
 		encryptV1(key, buf)
+		return buf, nil
 	case V2:
+		buf := append([]byte(nil), plaintext...)
 		encryptV2(key, buf)
-	default:
-		return nil, ErrUnsupportedVersion
+		return buf, nil
+	case V3:
+		buf := make([]byte, len(plaintext)*2)
+		copy(buf[:len(plaintext)], plaintext)
+		encryptV3(key, buf, len(plaintext)) // Pass original length
+		return buf, nil
 	}
 
-	return buf, nil
+	return nil, ErrUnsupportedVersion
 }
 
 func Decrypt(v Version, key, ciphertext []byte) ([]byte, error) {
@@ -42,61 +48,20 @@ func Decrypt(v Version, key, ciphertext []byte) ([]byte, error) {
 		return nil, ErrInvalidKeyLength
 	}
 
-	buf := append([]byte(nil), ciphertext...)
-
 	switch v {
 	case V1:
+		buf := append([]byte(nil), ciphertext...)
 		decryptV1(key, buf)
+		return buf, nil
 	case V2:
+		buf := append([]byte(nil), ciphertext...)
 		decryptV2(key, buf)
-	default:
-		return nil, ErrUnsupportedVersion
+		return buf, nil
+	case V3:
+		buf := append([]byte(nil), ciphertext...)
+		decryptV3(key, buf)
+		return buf[:len(buf)/2], nil
 	}
 
-	return buf, nil
-}
-
-func encryptV1(key, buf []byte) {
-	xorWithKeyAndIndex(key, buf)
-}
-
-func decryptV1(key, buf []byte) {
-	xorWithKeyAndIndex(key, buf)
-}
-
-func encryptV2(key, buf []byte) {
-	xorWithKey(key, buf)
-	swapByteNibbles(buf)
-	xorWithIndexStar(buf)
-}
-
-func decryptV2(key, buf []byte) {
-	xorWithIndexStar(buf)
-	swapByteNibbles(buf)
-	xorWithKey(key, buf)
-}
-
-func xorWithKeyAndIndex(key, buf []byte) {
-	for i := range buf {
-		buf[i] ^= key[i%8] ^ byte(i)
-	}
-}
-
-func xorWithIndexStar(buf []byte) {
-	for i := range buf {
-		buf[i] ^= byte((i * 0x2a) & 0xff)
-	}
-}
-
-func swapByteNibbles(buf []byte) {
-	for i := range buf {
-		b := buf[i]
-		buf[i] = ((b >> 4) | (b << 4)) & 0xff
-	}
-}
-
-func xorWithKey(key, buf []byte) {
-	for i := range buf {
-		buf[i] ^= key[i%len(key)]
-	}
+	return nil, ErrUnsupportedVersion
 }

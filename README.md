@@ -28,7 +28,7 @@ with 100% certainty what the different symbols mean, but here's my best guess:
 - `A!` - aimbot
 - `B!` - wallhack
 - `E!` - modified eyes model
-- `F!` – ???
+- `F!` – fullbright
 - `P?` - modified player model
 - `R!` - radar
 - `S!` - speed cheat

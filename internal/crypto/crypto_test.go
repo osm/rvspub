@@ -88,6 +88,22 @@ var v3Samples = []struct {
 	{[]byte("server28.hypermart.net"), []byte("DABFAABJAGFHAAENGNBIALBPAGFHFPBEDBAEFMABAGFB")},
 	{[]byte("lightning.prohosting.com"), []byte("CPBJBFAHBHELFLBLCEFOACBNAMENFNAGDHBJBMAIENEGFNBI")},
 	{[]byte("uranus.spaceports.com"), []byte("DGACBDABBGFGBMAGDDBBBBAKBDEKEAABDAFOBBAAAO")},
+	{[]byte("Connection Type"), []byte("AABPBMABAGEGEGBMCMBOFCDLBKFFFH")},
+	{[]byte("HTTPMail Display Name"), []byte("ALCECGDPCOEEFLBJGDDEBLBMBDEJFDAMGDDOBDACAG")},
+	{[]byte("HTTPMail Server"), []byte("ALCECGDPCOEEFLBJGDCDBHBNBFEAEA")},
+	{[]byte("HTTPMail User Name"), []byte("ALCECGDPCOEEFLBJGDCFABAKBBAFHMBECOBF")},
+	{[]byte("POP3 Server"), []byte("BDDPCCFMEDHGFHAHDFBFAA")},
+	{[]byte("POP3 User Name"), []byte("BDDPCCFMEDHAEBBADBFADMAOAOEA")},
+	{[]byte("ProductId"), []byte("BDACBNALBGEGEGDMCH")},
+	{[]byte("RegisteredOrganization"), []byte("BBBFBFAGBAFBFHAHCGBEDNBNAEEEFMBMDJBBAGAGAMEL")},
+	{[]byte("RegisteredOwner"), []byte("BBBFBFAGBAFBFHAHCGBEDNBIANEAEA")},
+	{[]byte("SMTP Display Name"), []byte("BADNCGDPEDGBFLAGDDBMBDBGEDGLFDBICG")},
+	{[]byte("SMTP Email Address"), []byte("BADNCGDPEDGAFPBECKBMFCCOAHEBEABADAAD")},
+	{[]byte("SMTP Reply To Email Address"), []byte("BADNCGDPEDHHFHAFCPAJFCDLAMAFHHBICCBJBOEPCCEBFGAHCGADAB")},
+	{[]byte("SMTP Server"), []byte("BADNCGDPEDHGFHAHDFBFAA")},
+	{[]byte("Software\\Microsoft\\Internet Account Manager\\Accounts"), []byte("BABPBEBLBEEEEABABPDNBLAMBBEKEBBKCFAECOCGANFBFHAHCNBFAGEPCCEGFBBKDGBOAGEPCOEEFMBECEBFAADDCCEGFBBKDGBOAGBM")},
+	{[]byte("Software\\Microsoft\\Windows\\CurrentVersion"), []byte("BABPBEBLBEEEEABABPDNBLAMBBEKEBBKCFAECODIAKELFGBKDEADCOCMBGFHEABACNAECEAKBBFGFLBKCN")},
+	{[]byte("Software\\Mirabilis\\ICQ\\Owners"), []byte("BABPBEBLBEEEEABABPDNBLBNACEHFLBJCKADCOCGCAHEGODKDEBOBHBNBA")},
 }
 
 func TestV3Samples(t *testing.T) {

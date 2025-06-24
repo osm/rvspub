@@ -22,9 +22,6 @@ cheat client was run by someone using that nickname at some point.
 
 ## Symbols
 
-I don't have access to the cheat client and haven't been able to determine
-with 100% certainty what the different symbols mean, but here's my best guess:
-
 - `A!` - aimbot
 - `B!` - wallhack
 - `E!` - modified eyes model
